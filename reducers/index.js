@@ -1,18 +1,6 @@
 import { combineReducers } from "redux";
+import pokesReducer from "./pokesReducer";
 
 export default combineReducers({
-  replaceMe: () => "MG",
+  pokes: pokesReducer,
 });
-
-// const initialState = {}
-
-// export default (state = initialState, { type, payload }) => {
-//   switch (type) {
-
-//   case first:
-//     return { ...state, ...payload }
-
-//   default:
-//     return state
-//   }
-// }

@@ -1,11 +1,12 @@
 import React from "react";
 import "./App.css";
-import TestApis from "./TestApis";
+import PokeList from "./PokeList";
+// import PokesList from "./PokesList";
 
 function App() {
   return (
     <div>
-      <TestApis />
+      <PokeList />
     </div>
   );
 }
