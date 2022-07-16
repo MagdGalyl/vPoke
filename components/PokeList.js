@@ -29,12 +29,10 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { fetchPokes } from "../actions";
 import { useDispatch } from "react-redux";
-
-import PokeCard from "./PokeCard";
-
-import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+
+import PokeCard from "./PokeCard";
 
 function PokeList(props) {
   const dispatch = useDispatch();
@@ -44,13 +42,22 @@ function PokeList(props) {
   }, []);
 
   const renderList = () => {
-    return props.pokes.map(({ id, base, name, img }) => {
+    return props.pokes.map((poke) => {
+      const { id, base, name, img } = poke;
       const { Attack: atk, Defense: def } = base;
       const pName = name.english;
       return (
         <div key={id}>
           <Col>
-            <PokeCard id={id} name={pName} atk={atk} def={def} imgSrc={img} />
+            <PokeCard
+              poke={poke}
+              id={id}
+              name={pName}
+              atk={atk}
+              def={def}
+              imgSrc={img}
+              addFav={props.addFav}
+            />
           </Col>
         </div>
       );
@@ -58,9 +65,10 @@ function PokeList(props) {
   };
 
   return (
-    <Container>
-      <Row className="row-cols-sm-2 row-cols-md-3 g-3">{renderList()}</Row>
-    </Container>
+    <Row className="row-cols-sm-2 row-cols-md-3 g-3">
+      {renderList()}
+      {/* PlaceHolder */}
+    </Row>
   );
 }
 

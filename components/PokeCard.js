@@ -1,18 +1,19 @@
 import React from "react";
-import { connect } from "react-redux";
+
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 
-export const PokeCard = ({ id, name, atk, def, imgSrc }) => {
+export const PokeCard = ({ id, name, atk, def, imgSrc, addFav, poke }) => {
   // console.log(props);
+
   return (
     <Card className="shadow-sm">
-      <Card.Img
+      {/* <Card.Img
         className="bd-placeholder-img card-img-top"
         width="100%"
         height="225"
         src={imgSrc}
-      />
+      /> */}
       <Card.Body>
         <Card.Title>{name}</Card.Title>
         <div className="d-flex justify-content-center">
@@ -24,7 +25,11 @@ export const PokeCard = ({ id, name, atk, def, imgSrc }) => {
           </Button>
         </div>
 
-        <Button className="mega-btn" variant="primary">
+        <Button
+          className="mega-btn"
+          variant="primary"
+          onClick={() => addFav(poke)}
+        >
           ADD TO FAVORITES
         </Button>
       </Card.Body>
@@ -32,8 +37,4 @@ export const PokeCard = ({ id, name, atk, def, imgSrc }) => {
   );
 };
 
-const mapStateToProps = (state) => ({});
-
-const mapDispatchToProps = {};
-
-export default connect(mapStateToProps, mapDispatchToProps)(PokeCard);
+export default PokeCard;
